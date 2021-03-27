@@ -72,6 +72,11 @@ namespace Stable_Lib.Handlers
             return docRef;
         }
 
+        public async Task<DocumentReference> CreateUser(string uid)
+        {
+            Console.WriteLine("Adding userinfo to database");
+        }
+
         public static FirestoreHandler GetInstance()
         {
             //Null coalescing, essentially checks if variable is null, and if it is creates a new

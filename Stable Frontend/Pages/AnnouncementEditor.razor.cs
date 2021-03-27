@@ -15,6 +15,7 @@ namespace Stable_Frontend.Pages
         private ElementReference divEditorElement;
         private string EditorContent;
         private string EditorHTMLContent;
+        private string Title;
         private bool EditorEnabled = true;
     
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -62,7 +63,7 @@ namespace Stable_Frontend.Pages
                 Author = "Unknown",
                 Body = EditorContent,
                 LastModified = DateTime.Now,
-                Title = "Announcement Title"
+                Title = Title
             });
             NavigationManager.NavigateTo("announcement");
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Google.Cloud.Firestore;
 
 namespace Stable_Lib.Models
 {
@@ -10,12 +11,14 @@ namespace Stable_Lib.Models
         public DateTime LastModified { get; set; }
         public string Title { get; set; }
         
+        public string DocumentId { get; set; }
+        
         public Dictionary<string, object> ToFirestoreObject()
         {
             return new Dictionary<string, object>() {
                 {"author", Author},
                 {"body", Body},
-                {"lastModified", LastModified},
+                {"lastModified", LastModified.ToUniversalTime()},
                 {"title", Title}
             };
         }
@@ -24,7 +27,7 @@ namespace Stable_Lib.Models
         {
             Author = firestoreObject["author"] as string;
             Body = firestoreObject["body"] as string;
-            LastModified = (DateTime) firestoreObject["lastModified"];
+            LastModified = ((Timestamp) firestoreObject["lastModified"]).ToDateTime();
             Title = firestoreObject["title"] as string;
         }
     }

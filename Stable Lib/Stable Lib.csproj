@@ -3,7 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Stable_Lib</RootNamespace>
-    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +18,10 @@
   <ItemGroup>
     <PackageReference Include="FirebaseAdmin" Version="2.0.0" />
     <PackageReference Include="Google.Cloud.Firestore" Version="2.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Handlers" />
   </ItemGroup>
 
 </Project>

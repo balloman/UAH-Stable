@@ -42,5 +42,42 @@ namespace StableLibTests
             retAnnouncement.GetObject(newTask.Result.ToDictionary());
             Assert.AreEqual(retAnnouncement.ToString(), myAnnouncement.ToString());
         }
+
+        [TestMethod]
+        public void UploadPetitionTest()
+        {
+            var myPetition = new Petition() {
+                Author = "Bernard",
+                Body = "This is my petition to test petitions",
+                Created = DateTime.Now,
+                Title = "Petition Test!",
+                Votes = 1
+            };
+            var firestoreHandler = FirestoreHandler.GetInstance();
+            var task = firestoreHandler.UploadNewPost("petitions", myPetition);
+            task.Wait();
+            Assert.IsTrue(task.IsCompletedSuccessfully);
+        }
+
+        [TestMethod]
+        public void GetPetitionTest()
+        {
+            var myPetition = new Petition() {
+                Author = "Bernard",
+                Body = "This is my petition to test petitions",
+                Created = DateTime.Now,
+                Title = "Petition Test!",
+                Votes = 1
+            };
+            var firestoreHandler = FirestoreHandler.GetInstance();
+            var task = firestoreHandler.UploadNewPost("petitions", myPetition);
+            task.Wait();
+            Assert.IsTrue(task.IsCompletedSuccessfully);
+            var newTask = firestoreHandler.GetPost("petitions", task.Result.Id);
+            newTask.Wait();
+            var retPetition = new Petition();
+            retPetition.GetObject(newTask.Result.ToDictionary());
+            Assert.AreEqual(retPetition.ToString(), myPetition.ToString());
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace Stable_Frontend.Pages
 
         private void AddPost()
         {
-            NavManager.NavigateTo("editor");
+            NavManager.NavigateTo("announcement editor");
         }
     }
 }

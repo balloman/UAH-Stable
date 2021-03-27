@@ -9,34 +9,37 @@
     </div>
 </div>
 <div style="border:10px" id="list container">
-    <div id="list">
-        <table class="table">
-            <thead class="thead-primary">
-                <tr>
-                    <th style="width:10%">Category</th>
-                    <th style="width:70%">Title</th>
-                    <th style="width:10%">Edited</th>
-                    <th style="width:10%">Votes</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var forecast in forecasts)
-                {
+    <div class="row">
+        <div class="col-8"id="list">
+            <table class="table">
+                <thead class="thead-primary">
                     <tr>
-
-                        <td>@forecast.Date.ToShortDateString()</td>
-                        <td>@forecast.TemperatureC</td>
-                        <td><p style="margin:0px; padding:0px">@forecast.Summary</p><p style="margin:0px; padding:0px">@Date.ToShortDateString()</p></td>
-                        <td><span class="oi oi-thumb-up">@forecast.TemperatureC</span>  <span class="oi oi-thumb-down">@forecast.TemperatureF</span> </td>
+                        <th style="width:10%">Category</th>
+                        <th style="width:70%">Title</th>
+                        <th style="width:10%">Edited</th>
+                        <th style="width:10%">Votes</th>
                     </tr>
-                }
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach (var forecast in forecasts)
+                    {
+                        <tr>
+
+                            <td>@forecast.Date.ToShortDateString()</td>
+                            <td>@forecast.TemperatureC</td>
+                            <td><p style="margin:0px; padding:0px">@forecast.Summary</p><p style="margin:0px; padding:0px">@Date.</p></td>
+                            <td><span class="oi oi-thumb-up">@forecast.TemperatureC</span>  <span class="oi oi-thumb-down">@forecast.TemperatureF</span> </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-2" id="Sidebar">
+            <button id="Add Petition" @onclick="AddPetition">Add Petition</button>
+        </div>
     </div>
 </div>
-<div id="Sidebar">
 
-</div>
  
 @code
 {
@@ -47,6 +50,11 @@
         forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
 
-     DateTime Date = DateTime.Now;
+    DateTime Date = DateTime.Now;
+
+    private void AddPetition()
+    {
+            // Move to the Petition Post Page
+    }
 
 }

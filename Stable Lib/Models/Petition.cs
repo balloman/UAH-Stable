@@ -4,7 +4,7 @@ using Google.Cloud.Firestore;
 
 namespace Stable_Lib.Models
 {
-    public struct Petition : IFirestoreSerializable
+    public sealed class Petition : FirestoreObject
     {
 
         public string Title { get; set; }
@@ -13,7 +13,7 @@ namespace Stable_Lib.Models
         public DateTime Created { get; set; }
         public int Votes { get; set; }
         
-        public Dictionary<string, object> ToFirestoreObject()
+        public override Dictionary<string, object> ToFirestoreObject()
         {
             return new Dictionary<string, object>() {
                 {"author", Author},
@@ -24,7 +24,7 @@ namespace Stable_Lib.Models
             };
         }
 
-        public void GetObject(Dictionary<string, object> firestoreObject)
+        public override void FromDict(Dictionary<string, object> firestoreObject)
         {
             Author = firestoreObject["author"] as string;
             Body = firestoreObject["body"] as string;
@@ -32,5 +32,13 @@ namespace Stable_Lib.Models
             Title = firestoreObject["title"] as string;
             Votes = Convert.ToInt32((long) firestoreObject["votes"]);
         }
+        
+        public Petition(){}
+
+        public Petition(Dictionary<string, object> firestoreObject)
+        {
+            FromDict(firestoreObject);
+        }
+
     }
 }

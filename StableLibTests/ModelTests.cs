@@ -39,7 +39,7 @@ namespace StableLibTests
             var newTask = firestoreHandler.GetPost("announcements", task.Result.Id);
             newTask.Wait();
             var retAnnouncement = new Announcement();
-            retAnnouncement.GetObject(newTask.Result.ToDictionary());
+            retAnnouncement.FromDict(newTask.Result.ToDictionary());
             Assert.AreEqual(retAnnouncement.ToString(), myAnnouncement.ToString());
         }
 
@@ -76,7 +76,7 @@ namespace StableLibTests
             var newTask = firestoreHandler.GetPost("petitions", task.Result.Id);
             newTask.Wait();
             var retPetition = new Petition();
-            retPetition.GetObject(newTask.Result.ToDictionary());
+            retPetition.FromDict(newTask.Result.ToDictionary());
             Assert.AreEqual(retPetition.ToString(), myPetition.ToString());
         }
 
@@ -87,7 +87,7 @@ namespace StableLibTests
             var task = handler.GetPostsAsync("announcements").Result;
             foreach (var post in task) {
                 var announcement = new Announcement();
-                announcement.GetObject(post.ToDictionary());
+                announcement.FromDict(post.ToDictionary());
                 Console.WriteLine(announcement.ToString());
             }
         }

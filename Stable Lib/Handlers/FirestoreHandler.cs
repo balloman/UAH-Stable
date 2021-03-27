@@ -64,7 +64,7 @@ namespace Stable_Lib.Handlers
         /// <param name="collection">The type of post to upload</param>
         /// <param name="post">the post</param>
         /// <returns></returns>
-        public async Task<DocumentReference> UploadNewPost(string collection, IFirestoreSerializable post)
+        public async Task<DocumentReference> UploadNewPost(string collection, FirestoreObject post)
         {
             Console.WriteLine($"Uploading new posts to collection {collection}");
             var docRef = await postsRef.Collection(collection).AddAsync(post.ToFirestoreObject());

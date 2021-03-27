@@ -18,7 +18,7 @@ namespace Stable_Frontend.Pages
             foreach (var post in task)
             {
                 var announcement = new Stable_Lib.Models.Announcement();
-                announcement.GetObject(post.ToDictionary());
+                announcement.FromDict(post.ToDictionary());
                 Results.Add(post.Id, announcement);
             }
         }

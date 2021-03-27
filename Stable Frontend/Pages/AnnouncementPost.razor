@@ -1,4 +1,4 @@
-﻿@page "/post/{id}"
+﻿@page "/post/{Id}"
 @using Google.Type
 @using Stable_Lib.Handlers
 @inject FirestoreHandler Handler
@@ -13,12 +13,12 @@
 <div>
     <div style="margin:3%" id="Post Contents">
         <div class="alert alert-light mt-4" role="alert">
-            <h2>@Title</h2>                 <!-- This portion is for the announcement title-->
-            <p style="margin:0px;padding:0px; font-size:9pt">Edited by @Author | @Date</p>
+            <h2>@Announcement.Title</h2>                 <!-- This portion is for the announcement title-->
+            <p style="margin:0px;padding:0px; font-size:9pt">Edited by @Announcement.Author | @Announcement.LastModified</p>
             <hr style="margin:0px 0px 5px 0px ">
 
             <span class="text-nowrap">
-                @((MarkupString)myMarkup)       <!-- This portion is for the announcement contents -->
+                @((MarkupString)Announcement.Body)       <!-- This portion is for the announcement contents -->
             </span>
         </div>
     </div>

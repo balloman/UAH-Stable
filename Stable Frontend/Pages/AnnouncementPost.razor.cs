@@ -10,19 +10,21 @@ namespace Stable_Frontend.Pages
 {
     public partial class AnnouncementPost
     {
-        string Title = "This is the title";
-        string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>";
-        string Author = "Eric Sung";
-        string Date = "01:01:2021";
+        // string Title = "This is the title";
+        // string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>";
+        // string Author = "Eric Sung";
+        // string Date = "01:01:2021";
 
         [Parameter]
-        public string Text { get; set; }
+        public string Id { get; set; }
 
-        public Stable_Lib.Models.Announcement Announcement { get; set; }
+        public Stable_Lib.Models.Announcement Announcement = new Stable_Lib.Models.Announcement();
 
         protected override async Task OnInitializedAsync()
         {
-            Announcement = new Stable_Lib.Models.Announcement();
+            var task = await Handler.GetPost("announcements", Id);
+            Announcement = new Stable_Lib.Models.Announcement(task.ToDictionary());
+            Console.WriteLine(Announcement.ToString());
         }
     }
 }

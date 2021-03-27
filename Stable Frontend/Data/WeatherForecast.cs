@@ -1,6 +1,6 @@
 using System;
 
-namespace UAH_Stable.Data
+namespace Stable_Frontend.Data
 {
     public class WeatherForecast
     {

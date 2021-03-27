@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAH Stable", "UAH Stable\UAH Stable.csproj", "{3360C863-0153-44BD-BF0D-1507ED7700AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stable Frontend", "Stable Frontend\Stable Frontend.csproj", "{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stable Lib", "Stable Lib\Stable Lib.csproj", "{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3360C863-0153-44BD-BF0D-1507ED7700AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3360C863-0153-44BD-BF0D-1507ED7700AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3360C863-0153-44BD-BF0D-1507ED7700AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3360C863-0153-44BD-BF0D-1507ED7700AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

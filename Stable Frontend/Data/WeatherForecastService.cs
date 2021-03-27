@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace UAH_Stable.Data
+namespace Stable_Frontend.Data
 {
     public class WeatherForecastService
     {

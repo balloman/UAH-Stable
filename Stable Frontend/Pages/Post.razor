@@ -8,17 +8,31 @@
     </div>
 </div>
 <div>
-    <h1>@title</h1> <!-- This portion is for the announcement title-->
-    <div>
-        @((MarkupString)myMarkup) <!-- This portion is for the announcement contents -->
+    <div style="margin:3%" id="Post Contents">
+        <div class="alert alert-light mt-4" role="alert">
+            <h2>@Title</h2>                 <!-- This portion is for the announcement title-->
+            <p style="margin:0px;padding:0px; font-size:9pt">Edited by @Author | @Date</p>
+            <hr style="margin:0px 0px 5px 0px ">
+
+            <span class="text-nowrap">
+                @((MarkupString)myMarkup)       <!-- This portion is for the announcement contents -->
+            </span>
+            <div class="oi-collapse-right" id="Extra Info">
+
+
+            </div>
+        </div>
+        </div>
+        
     </div>
-</div>
 
 
 
 
 @code
 {
-    string title = "This is the title";
-    string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>    <button class='btn btn-primary'>Button</button>";
+    string Title = "This is the title";
+    string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>";
+    string Author = "Eric Sung";
+    string Date = "01:01:2021";
 }

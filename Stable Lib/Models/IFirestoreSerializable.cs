@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Stable_Lib.Models
 {
@@ -21,5 +22,12 @@ namespace Stable_Lib.Models
         /// </summary>
         /// <param name="firestoreObject">a dictionary object from firestore</param>
         public void GetObject(Dictionary<string, object> firestoreObject);
+
+        public string ToString()
+        {
+            var ret = string.Empty;
+            var dict = ToFirestoreObject();
+            return dict.Keys.Aggregate(ret, (current, key) => current + $"{key}: {dict[key]}\n");
+        }  
     }
 }

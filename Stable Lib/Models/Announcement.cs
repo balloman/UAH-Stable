@@ -10,9 +10,7 @@ namespace Stable_Lib.Models
         public string Body { get; set; }
         public DateTime LastModified { get; set; }
         public string Title { get; set; }
-        
-        public string DocumentId { get; set; }
-        
+
         public Dictionary<string, object> ToFirestoreObject()
         {
             return new Dictionary<string, object>() {

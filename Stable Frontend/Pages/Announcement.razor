@@ -56,11 +56,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var announcement in Results)
+                        @foreach (var resultsKey in Results.Keys)
                         {
                             <tr>
-                                <td>@announcement.Title</td>
-                                <td>@announcement.LastModified.ToShortTimeString()</td>
+                                <a href="/post/@resultsKey"><td>@Results[resultsKey].Title</td></a>
+                                <td>@Results[resultsKey].LastModified.ToString("f")</td>
                             </tr>
                         }
                     </tbody>

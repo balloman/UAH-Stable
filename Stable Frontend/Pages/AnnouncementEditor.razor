@@ -1,5 +1,8 @@
-﻿@page "/announcement editor"
+﻿@page "/announcementeditor"
+@using Stable_Lib.Handlers
 @inject IJSRuntime JSRuntime
+@inject FirestoreHandler Handler
+@inject NavigationManager NavigationManager
 
 @if (EditorEnabled)
 {
@@ -65,66 +68,11 @@
 }
 <div @ref="@divEditorElement" />
 
-<br />
-<button class="btn btn-primary" @onclick="GetText">Get Text</button>
-<button class="btn btn-primary" @onclick="GetHTML">Get HTML</button>
-<button class="btn btn-primary" @onclick="GetEditorContent">Get Content</button>
-<br />
+@* <br /> *@
+@* <button class="btn btn-primary" @onclick="GetText">Get Text</button> *@
+@* <button class="btn btn-primary" @onclick="GetHTML">Get HTML</button> *@
+@* <button class="btn btn-primary" @onclick="GetEditorContent">Get Content</button> *@
+@* <br /> *@
 
 
-<button @onclick="SubmitContents">Submit</button>
-
-
-@code
-{
-
-    private string strSavedContent = "";
-    private ElementReference divEditorElement;
-    private string EditorContent;
-    private string EditorHTMLContent;
-    private bool EditorEnabled = true;
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (firstRender)
-        {
-            await JSRuntime.InvokeAsync<string>("QuillFunctions.createQuill", divEditorElement);
-        }
-    }
-
-
-    async Task GetText()
-    {
-        EditorHTMLContent = "";
-        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillText", divEditorElement);
-    }
-    async Task GetHTML()
-    {
-        EditorContent = "";
-        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillHTML", divEditorElement);
-    }
-    async Task GetEditorContent()
-    {
-        EditorHTMLContent = "";
-        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
-    }
-    async Task SaveContent()
-    {
-        strSavedContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
-    }
-    async Task LoadContent()
-    {
-        var QuillDelta = await JSRuntime.InvokeAsync<object>("QuillFunctions.loadQuillContent", divEditorElement, strSavedContent);
-    }
-
-    async Task DisableQuillEditor()
-    {
-        EditorEnabled = false;
-        await JSRuntime.InvokeAsync<object>("QuillFunctions.disableQuillEditor", divEditorElement);
-    }
-    private void SubmitContents()
-    {
-
-        // Extract the text from the text editor and add it to the other pages
-    }
-}
+<button class="btn-primary" @onclick="SubmitContents">Submit</button>

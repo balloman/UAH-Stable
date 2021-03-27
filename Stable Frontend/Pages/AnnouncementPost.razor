@@ -1,8 +1,11 @@
-﻿@page "/post"
+﻿@page "/post/{id}"
+@using Google.Type
+@using Stable_Lib.Handlers
+@inject FirestoreHandler Handler
 
 <!-- This page will be an individual page for announcements-->
 
-<div class="navbar navbar-lgiht bg-light">
+<div class="navbar navbar-light bg-light">
     <div class="navbar-brand mb-0">
         <h2>Announcements</h2>
     </div>
@@ -20,14 +23,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-@code
-{
-    string Title = "This is the title";
-    string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>";
-    string Author = "Eric Sung";
-    string Date = "01:01:2021";
-}

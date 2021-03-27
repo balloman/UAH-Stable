@@ -8,11 +8,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Stable_Frontend.Pages
 {
-    public partial class Petition_Post
+    public partial class PetitionPost
     {
-        public Petition_Post()
-        {
-
-        }
     }
 }

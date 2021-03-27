@@ -8,11 +8,7 @@ using Microsoft.AspNetCore.Components.Rendering;
 
 namespace Stable_Frontend.Pages
 {
-    public partial class Post
+    public partial class AnnouncementEditor
     {
-        public Post()
-        {
-
-        }
     }
 }

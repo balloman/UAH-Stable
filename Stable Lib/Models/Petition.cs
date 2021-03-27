@@ -4,7 +4,7 @@ using Google.Cloud.Firestore;
 
 namespace Stable_Lib.Models
 {
-    public class Petition : IFirestoreSerializable
+    public struct Petition : IFirestoreSerializable
     {
 
         public string Title { get; set; }

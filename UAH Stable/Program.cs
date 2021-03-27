@@ -15,6 +15,7 @@ namespace UAH_Stable
     {
         public static void Main(string[] args)
         {
+            //Hey this is our first change
             CreateHostBuilder(args).Build().Run();
         }
 

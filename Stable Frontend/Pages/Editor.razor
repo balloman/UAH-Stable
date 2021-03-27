@@ -1,18 +1,13 @@
 ﻿@page "/editor"
 @inject IJSRuntime JSRunTime
 
-<<<<<<< Updated upstream
-<body>
-    <div></div> 
-=======
 @if (EditorEnabled)
 {
     <br />
     <button class="btn btn-primary" @onclick="GetText">Get Text</button>
     <button class="btn btn-primary" @onclick="GetHTML">Get HTML</button>
     <button class="btn btn-primary" @onclick="GetEditorContent">Get Content</button>
-    <br />
->>>>>>> Stashed changes
+    <br /> 
 
     <br />
     <div>
@@ -44,20 +39,20 @@
             </select>
         </span>
         <span class="ql-formats">
-            <button class="q1-bold"></button>
-            <button class="q1-italic"></button>
-            <button class="q1-underline"></button>
-            <button class="q1-strike"></button>
+            <button class="ql-bold"></button>
+            <button class="ql-italic"></button>
+            <button class="ql-underline"></button>
+            <button class="ql-strike"></button>
         </span>
         <span class="ql-formats">
             <select class="ql-color"></select>
             <select class="ql-background"></select>
         </span>
         <span class="ql-formats">
-            <button class="q1-list" value="ordered"></button>
-            <button class="q1-list" value="bullet"></button>
-            <button class="q1-indent" value="-1"></button>
-            <button class="q1-indent" value="+1"></button>
+            <button class="ql-list" value="ordered"></button>
+            <button class="ql-list" value="bullet"></button>
+            <button class="ql-indent" value="-1"></button>
+            <button class="ql-indent" value="+1"></button>
             <select class="ql-align">
                 <option selected=""></option>
                 <option value="center"></option>

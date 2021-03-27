@@ -1,15 +1,11 @@
 ﻿@page "/editor"
-@inject IJSRuntime JSRunTime
+@inject IJSRuntime JSRuntime
 
 @if (EditorEnabled)
 {
-    <br />
-    <button class="btn btn-primary" @onclick="GetText">Get Text</button>
-    <button class="btn btn-primary" @onclick="GetHTML">Get HTML</button>
-    <button class="btn btn-primary" @onclick="GetEditorContent">Get Content</button>
-    <br /> 
 
-    <br />
+
+
     <div>
         @EditorContent
     </div>
@@ -17,11 +13,8 @@
         @((MarkupString)@EditorHTMLContent)
     </div>
 
-    <br />
-    <button class="btn btn-danger" @onclick="SaveContent">Save Content</button>
-    <button class="btn btn-success" @onclick="LoadContent">Load Saved Content</button>
-    <br />
-    <br />
+
+    <h1>Text Editor</h1>
     <br />
 
     <div id="toolbar">
@@ -66,13 +59,25 @@
     </div>
 
 
+
+
+
 }
 <div @ref="@divEditorElement" />
+
+<br />
+<button class="btn btn-primary" @onclick="GetText">Get Text</button>
+<button class="btn btn-primary" @onclick="GetHTML">Get HTML</button>
+<button class="btn btn-primary" @onclick="GetEditorContent">Get Content</button>
+<br />
+
+
+<button @onclick="SubmitContents">Submit</button>
 
 
 @code
 {
-    
+
     private string strSavedContent = "";
     private ElementReference divEditorElement;
     private string EditorContent;
@@ -83,32 +88,43 @@
     {
         if (firstRender)
         {
-            await JSRunTime.InvokeAsync<string>("QuillFunctions.createQuill", divEditorElement);
+            await JSRuntime.InvokeAsync<string>("QuillFunctions.createQuill", divEditorElement);
         }
     }
+
 
     async Task GetText()
     {
         EditorHTMLContent = "";
-        EditorContent = await JSRunTime.InvokeAsync<string>("QuillFunctions.getQuillText", divEditorElement);
+        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillText", divEditorElement);
     }
     async Task GetHTML()
     {
         EditorContent = "";
-        EditorHTMLContent = await JSRunTime.InvokeAsync<string>("QuillFunctions.getQuillHTML", divEditorElement);
+        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillHTML", divEditorElement);
     }
     async Task GetEditorContent()
     {
         EditorHTMLContent = "";
-        EditorContent = await JSRunTime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
+        EditorContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
     }
     async Task SaveContent()
     {
-        strSavedContent = await JSRunTime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
+        strSavedContent = await JSRuntime.InvokeAsync<string>("QuillFunctions.getQuillContent", divEditorElement);
     }
     async Task LoadContent()
     {
-        var QuillDelta = await JSRunTime.InvokeAsync<string>("QuillFunctions.loadQuillContent", divEditorElement, strSavedContent);
+        var QuillDelta = await JSRuntime.InvokeAsync<object>("QuillFunctions.loadQuillContent", divEditorElement, strSavedContent);
     }
-    
+
+    async Task DisableQuillEditor()
+    {
+        EditorEnabled = false;
+        await JSRuntime.InvokeAsync<object>("QuillFunctions.disableQuillEditor", divEditorElement);
+    }
+    private void SubmitContents()
+    {
+
+        // Extract the text from the text editor and add it to the other pages
+    }
 }

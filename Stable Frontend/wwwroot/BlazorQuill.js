@@ -19,11 +19,14 @@
             return quillControl.__quill.getText();
         },
         getQuillHTML: function (quillControl) {
-            return quillControl.__quill.root.innerHTML();
+            return quillControl.__quill.root.innerHTML;
         },
         loadQuillContent: function (quillControl, quillContent) {
             content = JSON.parse(quillContent);
-            return quillControl.__quill.setConents(content, 'api');
+            return quillControl.__quill.setContents(content, 'api');
         },
+        disableQuillEditor: function (quillControl) {
+            quillControl.__quill.enable(false);
+        }
     }
 })();

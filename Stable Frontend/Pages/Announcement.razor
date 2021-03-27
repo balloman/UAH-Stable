@@ -1,7 +1,9 @@
 ﻿@page "/announcement"
 
 @using Stable_Frontend.Data
+@using Stable_Lib.Handlers
 @inject WeatherForecastService ForecastService
+@inject FirestoreHandler Handler
 @inject NavigationManager NavManager
 
 <body>
@@ -49,20 +51,16 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Date</th>
-                            <th>Temp. (C)</th>
-                            <th>Temp. (F)</th>
-                            <th>Summary</th>
+                            <th>Title</th>
+                            <th>Last Modified</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var forecast in forecasts)
+                        @foreach (var announcement in Results)
                         {
                             <tr>
-                                <td>@forecast.Date.ToShortDateString()</td>
-                                <td>@forecast.TemperatureC</td>
-                                <td>@forecast.TemperatureF</td>
-                                <td>@forecast.Summary</td>
+                                <td>@announcement.Title</td>
+                                <td>@announcement.LastModified.ToShortTimeString()</td>
                             </tr>
                         }
                     </tbody>
@@ -74,23 +72,3 @@
         </div>
     </div>
 </body>
-
-
-
-
-
-@code {
-
-    private void AddPost()
-    {
-        NavManager.NavigateTo("editor");
-    }
-
-
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
-}

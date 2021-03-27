@@ -18,7 +18,7 @@ namespace Stable_Lib.Handlers
         private FirestoreDb db;
         private DocumentReference postsRef;
         
-        private FirestoreHandler()
+        public FirestoreHandler()
         {
             Console.WriteLine("Grabbing reference to database...");
             var resourceNames = Assembly.GetExecutingAssembly().GetManifestResourceNames();
@@ -36,11 +36,10 @@ namespace Stable_Lib.Handlers
         /// </summary>
         /// <param name="collection">The collection to grab the posts from</param>
         /// <returns>The posts as document snapshots</returns>
-        public async Task<QuerySnapshot> GetPosts(string collection)
+        public async Task<QuerySnapshot> GetPostsAsync(string collection)
         {
             Console.WriteLine($"Retrieving posts of collection {collection}");
-            var snapshot =  await db.Collection("posts").Document("postType")
-                .Collection(collection).GetSnapshotAsync();
+            var snapshot =  await postsRef.Collection(collection).GetSnapshotAsync();
             Console.WriteLine("Posts retrieved!");
             return snapshot;
         }

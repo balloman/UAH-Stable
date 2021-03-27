@@ -60,7 +60,7 @@
                         {
                             <tr>
                                 <a href="/post/@resultsKey"><td>@Results[resultsKey].Title</td></a>
-                                <td>@Results[resultsKey].LastModified.ToString("f")</td>
+                                <td>@Results[resultsKey].LastModified.ToLocalTime().ToString("f")</td>
                             </tr>
                         }
                     </tbody>

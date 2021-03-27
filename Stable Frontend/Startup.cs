@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Stable_Frontend.Data;
+using Stable_Lib.Handlers;
 
 namespace Stable_Frontend
 {
@@ -29,6 +30,7 @@ namespace Stable_Frontend
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddSingleton<FirestoreHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

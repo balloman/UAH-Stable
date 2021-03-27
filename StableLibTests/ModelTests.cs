@@ -79,5 +79,17 @@ namespace StableLibTests
             retPetition.GetObject(newTask.Result.ToDictionary());
             Assert.AreEqual(retPetition.ToString(), myPetition.ToString());
         }
+
+        [TestMethod]
+        public void GetAnnouncementsTest()
+        {
+            var handler = FirestoreHandler.GetInstance();
+            var task = handler.GetPostsAsync("announcements").Result;
+            foreach (var post in task) {
+                var announcement = new Announcement();
+                announcement.GetObject(post.ToDictionary());
+                Console.WriteLine(announcement.ToString());
+            }
+        }
     }
 }

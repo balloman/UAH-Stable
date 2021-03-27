@@ -1,96 +1,74 @@
 ﻿@page "/announcement"
 
 @using Stable_Frontend.Data
+@using Stable_Lib.Handlers
 @inject WeatherForecastService ForecastService
+@inject FirestoreHandler Handler
 @inject NavigationManager NavManager
 
-
-<div class="navbar navbar-lgiht bg-light">
-    <div class="navbar-brand mb-0">
-        <h2>Announcements</h2>
+<body>
+    <div class="navbar navbar-lgiht bg-light">
+        <div class="navbar-brand mb-0">
+            <h2>Announcements</h2>
+        </div>
     </div>
-</div>
-<div class="row" id="column-container">
-    <div class="col-4" id="category-column">
-        <h6 class="font-weight-bold" style="margin:10px 0">Categories</h6>
-        <table>
-            <tr>
-                <th><input type="checkbox" id="arts" value="arts_val" /></th>
-                <th>College of Arts Humanities Social Sciences</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="business" value="business_val" /></th>
-                <th>College of Business</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="education" value="education_val" /></th>
-                <th>College of Education</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="engineering" value="engineering_val" /></th>
-                <th>College of Engineering</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="nursing" value="nursing_val" /></th>
-                <th>College of Nursing</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="science" value="science_val" /></th>
-                <th>College of Science</th>
-            </tr>
-            <tr>
-                <th><input type="checkbox" id="honors" value="honors_val" /></th>
-                <th>Honors College</th>
-            </tr>
-        </table>
-    </div>
-    <div class="col-8" id="table-column">
-        <div style="overflow: auto">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var forecast in forecasts)
-                    {
-                        <tr>
-                            <td>@forecast.Date.ToShortDateString()</td>
-                            <td>@forecast.TemperatureC</td>
-                            <td>@forecast.TemperatureF</td>
-                            <td>@forecast.Summary</td>
-                        </tr>
-                    }
-                </tbody>
+    <div class="row" id="column-container">
+        <div class="col-4" id="category-column">
+            <h6 class="font-weight-bold" style="margin:10px 0">Categories</h6>
+            <table>
+                <tr>
+                    <th><input type="checkbox" id="arts" value="arts_val" /></th>
+                    <th>College of Arts Humanities Social Sciences</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="business" value="business_val" /></th>
+                    <th>College of Business</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="education" value="education_val" /></th>
+                    <th>College of Education</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="engineering" value="engineering_val" /></th>
+                    <th>College of Engineering</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="nursing" value="nursing_val" /></th>
+                    <th>College of Nursing</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="science" value="science_val" /></th>
+                    <th>College of Science</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="honors" value="honors_val" /></th>
+                    <th>Honors College</th>
+                </tr>
             </table>
         </div>
-        <div id="edit-button-container">
-            <button id="add_post" @onclick="AddPost">Add Announcement</button>
+        <div class="col-8" id="table-column">
+            <div style="overflow: auto">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Last Modified</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var announcement in Results)
+                        {
+                            <tr>
+                                <td>@announcement.Title</td>
+                                <td>@announcement.LastModified.ToShortTimeString()</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div id="edit-button-container">
+                <button id="add_post" @onclick="AddPost">Add Announcement</button>
+            </div>
         </div>
     </div>
-</div>
-
-
-
-
-
-
-@code {
-
-    private void AddPost()
-    {
-        NavManager.NavigateTo("editor");
-    }
-
-
-    private WeatherForecast[] forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
-}
+</body>

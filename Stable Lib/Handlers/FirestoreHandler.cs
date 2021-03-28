@@ -91,6 +91,12 @@ namespace Stable_Lib.Handlers
             return userUpdateTask;
         }
 
+        /// <summary>
+        /// Creates a user in the database
+        /// </summary>
+        /// <param name="uid">the uid of the user to add</param>
+        /// <param name="data">the info for the user to add</param>
+        /// <returns></returns>
         public async Task<WriteResult> CreateUser(string uid, Dictionary<string, object> data)
         {
             Console.WriteLine("Adding userinfo to database");

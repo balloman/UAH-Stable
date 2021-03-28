@@ -56,7 +56,7 @@ namespace Stable_Frontend.Pages
             Console.WriteLine("Sorting");
             var selectedColleges = new List<string>();
             var someCheck = false;
-            for (var i = 0; i < Checked.Length; i++) {
+            for (var i = 0; i < 7; i++) {
                 if (Checked[i]) {
                     selectedColleges.Add(Colleges[i]);
                     someCheck = true;

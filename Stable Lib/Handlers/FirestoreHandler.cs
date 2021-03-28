@@ -17,7 +17,7 @@ namespace Stable_Lib.Handlers
         // ReSharper disable once InconsistentNaming
         private static FirestoreHandler Instance;
         private FirestoreDb db;
-        private readonly DocumentReference postsRef;
+        public readonly DocumentReference PostsRef;
         private readonly CollectionReference usersRef;
         public User user = User.DefaultUser();
         public bool LoggedIn = false;
@@ -32,7 +32,7 @@ namespace Stable_Lib.Handlers
                                                    throw new FileNotFoundException()).ReadToEnd()
             }.Build());
             Console.WriteLine("Reference to database received");
-            postsRef = db.Collection("userContent").Document("posts");
+            PostsRef = db.Collection("userContent").Document("posts");
             usersRef = db.Collection("users");
         }
 
@@ -44,7 +44,7 @@ namespace Stable_Lib.Handlers
         public async Task<QuerySnapshot> GetPostsAsync(string collection)
         {
             Console.WriteLine($"Retrieving posts of collection {collection}");
-            var snapshot =  await postsRef.Collection(collection).GetSnapshotAsync();
+            var snapshot =  await PostsRef.Collection(collection).GetSnapshotAsync();
             Console.WriteLine("Posts retrieved!");
             return snapshot;
         }
@@ -54,10 +54,10 @@ namespace Stable_Lib.Handlers
             Console.WriteLine($"Retrieving posts of collection {collection}");
             QuerySnapshot snapshot;
             if (descending) {
-                snapshot =  await postsRef.Collection(collection).OrderByDescending(ordered).GetSnapshotAsync();
+                snapshot =  await PostsRef.Collection(collection).OrderByDescending(ordered).GetSnapshotAsync();
             }
             else {
-                snapshot =  await postsRef.Collection(collection).OrderBy(ordered).GetSnapshotAsync();
+                snapshot =  await PostsRef.Collection(collection).OrderBy(ordered).GetSnapshotAsync();
             }
             
             Console.WriteLine("Posts retrieved!");
@@ -73,7 +73,7 @@ namespace Stable_Lib.Handlers
         public async Task<DocumentSnapshot> GetPost(string collection, string documentId)
         {
             Console.WriteLine($"Retrieving post from collection {collection} of id {documentId}");
-            var docRef = await postsRef.Collection(collection).Document(documentId).GetSnapshotAsync();
+            var docRef = await PostsRef.Collection(collection).Document(documentId).GetSnapshotAsync();
             Console.WriteLine("Post retrieved!");
             return docRef;
         }
@@ -87,7 +87,7 @@ namespace Stable_Lib.Handlers
         public async Task<DocumentReference> UploadNewPost(string collection, FirestoreObject post)
         {
             Console.WriteLine($"Uploading new posts to collection {collection}");
-            var docRef = await postsRef.Collection(collection).AddAsync(post.ToFirestoreObject());
+            var docRef = await PostsRef.Collection(collection).AddAsync(post.ToFirestoreObject());
             Console.WriteLine("Post uploaded!");
             return docRef;
         }
@@ -141,7 +141,7 @@ namespace Stable_Lib.Handlers
         /// <returns></returns>
         public async Task<WriteResult> SetPetitionVotes(string postId, int votes)
         {
-            var docRef = await postsRef.Collection("petitions").Document(postId).UpdateAsync("votes", votes);
+            var docRef = await PostsRef.Collection("petitions").Document(postId).UpdateAsync("votes", votes);
             return docRef;
         }
 

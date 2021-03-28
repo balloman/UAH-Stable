@@ -15,6 +15,7 @@ namespace Stable_Frontend.Pages
         string Name;
         string Email;
         string Password;
+        private string error;
         public RegisterPage()
         {
 
@@ -23,6 +24,11 @@ namespace Stable_Frontend.Pages
         public async Task SubmitInfo()
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.signup", new[] {Email, Password});
+            if (string.IsNullOrEmpty(uid)) {
+                Console.WriteLine("Invalid Login...");
+                error = "Invalid Login...";
+                return;
+            }
             await Handler.CreateUser(uid, new User(Email, Name, new List<string>()));
             NavigationManager.NavigateTo("login");
         }

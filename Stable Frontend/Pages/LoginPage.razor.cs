@@ -26,7 +26,7 @@ namespace Stable_Frontend.Pages
             Handler.Login(new User(data.ToDictionary()) {
                 Uid = uid
             });
-            NavigationManager.NavigateTo("announcement");
+            NavigationManager.NavigateTo("announcement", true);
         }
     }
 }

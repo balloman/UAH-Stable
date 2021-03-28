@@ -133,6 +133,18 @@ namespace Stable_Lib.Handlers
             return docRef;
         }
 
+        /// <summary>
+        /// Asynchronously sets the amount of votes for a petition
+        /// </summary>
+        /// <param name="postId">The id variable of the post</param>
+        /// <param name="votes">The amount of votes to set the petition to</param>
+        /// <returns></returns>
+        public async Task<WriteResult> SetPetitionVotes(string postId, int votes)
+        {
+            var docRef = await postsRef.Collection("petitions").Document(postId).UpdateAsync("votes", votes);
+            return docRef;
+        }
+
         public void Login(User user)
         {
             this.user = user;

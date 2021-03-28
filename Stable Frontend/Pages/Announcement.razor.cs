@@ -9,6 +9,8 @@ namespace Stable_Frontend.Pages
     public partial class Announcement
     {
         public Dictionary<string, Stable_Lib.Models.Announcement> Results { get; set; }
+        public bool[] Checked = {false, false, false, false, false, false, false};
+        private string[] Colleges = {"AHSS", "Business", "Education", "Engineering", "Nursing", "Science", "Honors"};
 
         protected override async Task OnInitializedAsync()
         {
@@ -31,6 +33,11 @@ namespace Stable_Frontend.Pages
         private void GoToPost(string id)
         {
             NavManager.NavigateTo($"post/{id}");
+        }
+
+        private async Task Sort()
+        {
+            
         }
     }
 }

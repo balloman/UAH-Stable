@@ -26,30 +26,31 @@
                 </tr>
                 <tr>
                     <th><input type="checkbox" id="arts" value="arts_val" bind="@Checked[0]" /></th>
+                    <th><input type="checkbox" id="arts" value="arts_val" @bind="Checked[0]" /></th>
                     <th>College of Arts Humanities Social Sciences</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="business" value="business_val" bind="@Checked[1]" /></th>
+                    <th><input type="checkbox" id="business" value="business_val" @bind="Checked[1]" /></th>
                     <th>College of Business</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="education" value="education_val" bind="@Checked[2]" /></th>
+                    <th><input type="checkbox" id="education" value="education_val" @bind="Checked[2]" /></th>
                     <th>College of Education</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="engineering" value="engineering_val" bind="@Checked[3]" /></th>
+                    <th><input type="checkbox" id="engineering" value="engineering_val" @bind="Checked[3]" /></th>
                     <th>College of Engineering</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="nursing" value="nursing_val" bind="@Checked[4]" /></th>
+                    <th><input type="checkbox" id="nursing" value="nursing_val" @bind="Checked[4]" /></th>
                     <th>College of Nursing</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="science" value="science_val" bind="@Checked[5]" /></th>
+                    <th><input type="checkbox" id="science" value="science_val" @bind="Checked[5]" /></th>
                     <th>College of Science</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="honors" value="honors_val" bind="@Checked[6]" /></th>
+                    <th><input type="checkbox" id="honors" value="honors_val" @bind="Checked[6]" /></th>
                     <th>Honors College</th>
                 </tr>
                 <tr>
@@ -58,7 +59,7 @@
                 </tr>
             </table>
             <br/>
-            <button class="btn btn-primary" onclick="@Sort()">Filter</button>
+            <button class="btn btn-primary" @onclick="Sort">Filter</button>
         </div>
         <div class="col-8" id="table-column">
             <div style="overflow: auto">

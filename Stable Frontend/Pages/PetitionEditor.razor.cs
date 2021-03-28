@@ -16,6 +16,7 @@ namespace Stable_Frontend.Pages
         private string EditorContent;
         private string EditorHTMLContent;
         private string Title;
+        private string Category;
         private bool EditorEnabled = true;
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -61,14 +62,16 @@ namespace Stable_Frontend.Pages
         private async Task SubmitContents()
         {
             await GetHTML();
-            await Handler.UploadNewPost("announcements", new Stable_Lib.Models.Announcement
+            var postRef = await Handler.UploadNewPost("petitions", new Stable_Lib.Models.Petition()
             {
-                Author = "Unknown",
+                Author = Handler.user.Uid,
                 Body = EditorContent,
-                LastModified = DateTime.Now,
-                Title = Title
+                Created = DateTime.Now,
+                Title = Title,
+                Category = Category
             });
-            NavigationManager.NavigateTo("announcement");
+            await Handler.AddPostToUser(Handler.user.Uid, postRef);
+            NavigationManager.NavigateTo("petition");
         }
         
     }

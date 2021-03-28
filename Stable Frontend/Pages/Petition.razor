@@ -28,7 +28,7 @@
                     {
                         <tr>
                             <td>@Results[resultsKey].Category</td>
-                            <td>@Results[resultsKey].Title</td>
+                            <a href="/petitionpost/@resultsKey"><td>@Results[resultsKey].Title</td></a>
                             <td><p style="margin:0px; padding:0px">@Results[resultsKey].Created.ToLocalTime().ToString("f")</p></td>
                             <td><span class="oi oi-thumb-up">@Results[resultsKey].Votes</span></td>
                         </tr>

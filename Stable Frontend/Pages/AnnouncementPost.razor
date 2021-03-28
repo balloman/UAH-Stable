@@ -18,10 +18,10 @@
             <p style="margin:0px;padding:0px; font-size:9pt">Edited by @AuthorName| @Announcement.LastModified.ToLocalTime()</p>
             <hr style="margin:0px 0px 5px 0px ">
 
-            <span class="text-nowrap" style="border:10px 0 0 0">
+            <span style="border:10px 0 0 0">
                 @((MarkupString)Announcement.Body)       <!-- This portion is for the announcement contents -->
             </span>
         </div>
     </div>
-    <button class="btn btn-block">Back</button>
+    <button class="btn btn-block"@onclick="MoveBack">Back</button>
 </div>

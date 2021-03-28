@@ -49,6 +49,21 @@ namespace Stable_Lib.Handlers
             return snapshot;
         }
 
+        public async Task<QuerySnapshot> GetPostsAsync(string collection, string ordered, bool descending)
+        {
+            Console.WriteLine($"Retrieving posts of collection {collection}");
+            QuerySnapshot snapshot;
+            if (descending) {
+                snapshot =  await postsRef.Collection(collection).OrderByDescending(ordered).GetSnapshotAsync();
+            }
+            else {
+                snapshot =  await postsRef.Collection(collection).OrderBy(ordered).GetSnapshotAsync();
+            }
+            
+            Console.WriteLine("Posts retrieved!");
+            return snapshot;
+        }
+
         /// <summary>
         ///  Asynchronously attempts to retrieve a singular post from the given collection
         /// </summary>

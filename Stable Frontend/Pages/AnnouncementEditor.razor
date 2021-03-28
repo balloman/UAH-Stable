@@ -16,11 +16,46 @@
 
 
     <h1>New Post</h1>
-    <br />
     <form>
         <div class="form-group">
             <label for="titleInput">Title</label>
             <input @bind="Title" type="text" class="form-control" id="titleInput" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck0" @bind="Colleges[0]">
+                <label class="custom-control-label" for="customCheck0">AHSS</label>
+            </div>
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" @bind="Colleges[1]">
+                <label class="custom-control-label" for="customCheck1">Business</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" @bind="Colleges[2]">
+                <label class="custom-control-label" for="customCheck2">Education</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck3" @bind="Colleges[3]">
+                <label class="custom-control-label" for="customCheck3">Engineering</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck4" @bind="Colleges[4]">
+                <label class="custom-control-label" for="customCheck4">Nursing</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck5" @bind="Colleges[5]">
+                <label class="custom-control-label" for="customCheck5">Science</label>
+            </div>
+            
+            <div class="custom-control custom-checkbox custom-control-inline">
+                <input type="checkbox" class="custom-control-input" id="customCheck6" @bind="Colleges[6]">
+                <label class="custom-control-label" for="customCheck6">Honors</label>
+            </div>
+            
         </div>
         <div class="form-group">
             <div id="toolbar">

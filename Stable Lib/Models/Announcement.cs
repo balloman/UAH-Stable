@@ -10,7 +10,7 @@ namespace Stable_Lib.Models
         public string Body { get; set; }
         public DateTime LastModified { get; set; }
         public string Title { get; set; }
-        public string College { get; set; }
+        public List<string> College = new List<string>();
 
         public override Dictionary<string, object> ToFirestoreObject()
         {
@@ -30,10 +30,14 @@ namespace Stable_Lib.Models
             LastModified = ((Timestamp) firestoreObject["lastModified"]).ToDateTime();
             Title = firestoreObject["title"] as string;
             try {
-                College = firestoreObject["college"] as string;
+                foreach (var college in (List<object>) firestoreObject["college"]) {
+                    College.Add(college as string);
+                }
             }
-            catch (KeyNotFoundException e) {
-                Console.WriteLine("College not found...");
+            catch (Exception e) {
+                if (e is KeyNotFoundException || e is NullReferenceException) {
+                    Console.WriteLine("College not found...");
+                }
             }
         }
 

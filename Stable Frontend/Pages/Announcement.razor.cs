@@ -14,7 +14,7 @@ namespace Stable_Frontend.Pages
         {
             Results = new Dictionary<string, Stable_Lib.Models.Announcement>();
             Console.WriteLine("Attemtping serverside grab");
-            var task = await Handler.GetPostsAsync("announcements");
+            var task = await Handler.GetPostsAsync("announcements", "lastModified", true);
             foreach (var post in task)
             {
                 var announcement = new Stable_Lib.Models.Announcement();

@@ -16,6 +16,7 @@ namespace Stable_Frontend.Pages
         private string EditorContent;
         private string EditorHTMLContent;
         private string Title;
+        private bool[] Colleges = {false, false, false, false, false, false, false};
         private bool EditorEnabled = true;
     
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -63,10 +64,25 @@ namespace Stable_Frontend.Pages
                 Author = Handler.user.Uid,
                 Body = EditorContent,
                 LastModified = DateTime.Now,
-                Title = Title
+                Title = Title,
+                College = EvaluateColleges()
             });
             await Handler.AddPostToUser(Handler.user.Uid, postRef);
             NavigationManager.NavigateTo("announcement");
+        }
+
+        private List<string> EvaluateColleges()
+        {
+            var retList = new List<string>();
+            var colleges = new List<string>
+                {"AHSS", "Business", "Education", "Engineering", "Nursing", "Science", "Honors"};
+            for (var i = 0; i < 7; i++) {
+                if (Colleges[i]) {
+                    retList.Add(colleges[i]);
+                }
+            }
+
+            return retList;
         }
     }
 }

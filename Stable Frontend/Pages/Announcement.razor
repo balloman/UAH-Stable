@@ -6,14 +6,14 @@
 @inject NavigationManager NavManager
 
 <body>
-    <div class="navbar navbar-lgiht bg-light">
+    <div class="navbar navbar-light bg-light">
         <div class="navbar-brand mb-0">
             <h2>Announcements</h2>
             
         </div>
     </div>
     <div class="row" id="column-container">
-        <div class="col-4" id="category-column">
+        <div class="col-3" id="category-column">
             <h6 class="font-weight-bold" style="margin:10px 0">Categories</h6>
             <table>
                 <tr>
@@ -51,16 +51,17 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>College</th>
-                            <th>Title</th>
-                            <th>Last Modified</th>
+                            <th scope="col">College</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Last Modified</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var resultsKey in Results.Keys)
                         {
                             <tr>
-                                <td><!--Add the College Information--></td>
+                                @* <td><b hidden="@Results[resultsKey].College[0]== ">A</b><b>B</b><b>Ed</b><b>En</b><b>N</b><b>S</b><b>H</b></td> *@
+                                <td>@foreach(var c in Results[resultsKey].College){@(c.Substring(0, 2) + ' ')}</td>
                                 <a href="/post/@resultsKey"><td>@Results[resultsKey].Title</td></a>
                                 <td>@Results[resultsKey].LastModified.ToLocalTime().ToString("f")</td>
                             </tr>

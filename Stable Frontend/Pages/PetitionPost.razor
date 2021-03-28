@@ -15,9 +15,15 @@
             <p style="margin:0px;padding:0px; font-size:9pt">Edited by @AuthorName | @Petition.Created.ToLocalTime()</p>
             <hr style="margin:0px 0px 5px 0px ">
 
-            <span class="text-nowrap">
+            <span>
                 @((MarkupString)Petition.Body)       <!-- This portion is for the announcement contents -->
             </span>
+        </div>
+        <hr />
+        <div>
+            <button @onclick="UpVote" class="btn" id="upvote"><div class="oi oi-thumb-up"></div></button>
+            <button @onclick="DownVote" class="btn" id="downvote"><div class="oi oi-thumb-down"></div></button>
+            <h6>@Votes</h6>
         </div>
     </div>
 </div>

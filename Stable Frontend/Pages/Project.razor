@@ -1,15 +1,38 @@
 ﻿@page "/project"
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
-
-@code {
-
-    
+@using Stable_Lib.Handlers
+@inject FirestoreHandler Handler
+@inject NavigationManager NavManager
 
 
-
-}
+<div class="navbar navbar-lgiht bg-light">
+    <div class="navbar-brand mb-0">
+        <h2>Project</h2>
+    </div>
+</div>
+<div style="border:10px" id="list container">
+    <div class="row">
+        <div class="col-8" id="list">
+            <table class="table">
+                <thead class="thead-primary">
+                <tr>
+                    <th style="width:60%">Title</th>
+                    <th style="width:20%">Author</th>
+                    <th style="width:20%">Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var resultsKey in Results.Keys)
+                {
+                    <tr>
+                        <td>@Results[resultsKey].Title</td>
+                        <td>@Authors[resultsKey]</td>
+                        <td><p style="margin:0px; padding:0px">@Results[resultsKey].Created.ToLocalTime().ToString("f")</p></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

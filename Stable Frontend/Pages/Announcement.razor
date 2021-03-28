@@ -14,15 +14,16 @@
     </div>
     <div class="row" id="column-container">
         <div class="col-3" id="category-column">
-            <h6 class="font-weight-bold" style="margin:10px 0">Categories</h6>
+            <h5 class="font-weight-bold" style="margin:10px 0">Categories</h5>
             <table>
                 <tr>
                     <th><input type="checkbox" id="general" value="arts_val" /></th>
                     <th>General</th>
                 </tr>
+                <tr><!-- Add a Space --></tr>
                 <tr>
                     <th></th>
-                    <th style="font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Colleges</th>
+                    <th style="font-size:18px; color:blue;">Colleges </th>
                 </tr>
                 <tr>
                     <th><input type="checkbox" id="arts" value="arts_val" @bind="Checked[0]" /></th>
@@ -52,10 +53,29 @@
                     <th><input type="checkbox" id="honors" value="honors_val" @bind="Checked[6]" /></th>
                     <th>Honors College</th>
                 </tr>
+                <tr><!-- Add a Space --></tr>
                 <tr>
                     <th></th>
-                    <th>Communities</th>
+                    <th style="font-size:18px; color:blue;">Clubs</th>
                 </tr>
+                <tr>
+                    <th><input type="checkbox" id="ACM" value="acm_val" /></th>
+                    <th>ACM</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="Space Hardware" value="spacehardware_val" /></th>
+                    <th>Space Hardware</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="Esports" value="esports_val" /></th>
+                    <th>Esports</th>
+                </tr>
+                <tr><th></th><!-- Add a Space --><th></th></tr>
+                <tr>
+                    <th></th>
+                    <th style="font-size:18px; color:blue;">Communities</th>
+                </tr>
+
             </table>
             <br/>
             <button class="btn btn-primary" @onclick="Sort">Filter</button>

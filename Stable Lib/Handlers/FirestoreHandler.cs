@@ -17,7 +17,8 @@ namespace Stable_Lib.Handlers
         // ReSharper disable once InconsistentNaming
         private static FirestoreHandler Instance;
         private FirestoreDb db;
-        private DocumentReference postsRef;
+        private readonly DocumentReference postsRef;
+        private readonly CollectionReference usersRef;
         public User user = User.DefaultUser();
         public bool LoggedIn = false;
         
@@ -32,6 +33,7 @@ namespace Stable_Lib.Handlers
             }.Build());
             Console.WriteLine("Reference to database received");
             postsRef = db.Collection("userContent").Document("posts");
+            usersRef = db.Collection("users");
         }
 
         /// <summary>
@@ -73,6 +75,20 @@ namespace Stable_Lib.Handlers
             var docRef = await postsRef.Collection(collection).AddAsync(post.ToFirestoreObject());
             Console.WriteLine("Post uploaded!");
             return docRef;
+        }
+
+        /// <summary>
+        /// This async method adds a post to a users post database
+        /// </summary>
+        /// <param name="uid">the author to add the post to</param>
+        /// <param name="postId">document reference for the post</param>
+        /// <returns></returns>
+        public async Task<WriteResult> AddPostToUser(string uid, DocumentReference postId)
+        {
+            var userUpdateTask = await usersRef
+                .Document(uid)
+                .UpdateAsync("posts", FieldValue.ArrayUnion($"{postId.Parent.Id}/{postId.Id}"));
+            return userUpdateTask;
         }
 
         public async Task<WriteResult> CreateUser(string uid, Dictionary<string, object> data)

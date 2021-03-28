@@ -59,12 +59,13 @@ namespace Stable_Frontend.Pages
         private async Task SubmitContents()
         {
             await GetHTML();
-            await Handler.UploadNewPost("announcements", new Stable_Lib.Models.Announcement {
+            var postRef = await Handler.UploadNewPost("announcements", new Stable_Lib.Models.Announcement {
                 Author = Handler.user.Uid,
                 Body = EditorContent,
                 LastModified = DateTime.Now,
                 Title = Title
             });
+            await Handler.AddPostToUser(Handler.user.Uid, postRef);
             NavigationManager.NavigateTo("announcement");
         }
     }

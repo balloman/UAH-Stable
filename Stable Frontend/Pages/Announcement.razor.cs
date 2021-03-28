@@ -12,8 +12,14 @@ namespace Stable_Frontend.Pages
         public bool AllChecked = false;
         public bool[] Checked = {false, false, false, false, false, false, false,false,false,false,false};
         private string[] Colleges = {"AHSS", "Business", "Education", "Engineering", "Nursing", "Science", "Honors"};
+        private bool sorted = false;
 
         protected override async Task OnInitializedAsync()
+        {
+            await GetAnnouncements();
+        }
+
+        private async Task GetAnnouncements()
         {
             Results = new Dictionary<string, Stable_Lib.Models.Announcement>();
             Console.WriteLine("Attemtping serverside grab");
@@ -49,13 +55,19 @@ namespace Stable_Frontend.Pages
         {
             Console.WriteLine("Sorting");
             var selectedColleges = new List<string>();
-            bool someCheck = false;
-            for (var i = 0; i < 7; i++) {   // The number of college categories are only 7
+            var someCheck = false;
+            for (var i = 0; i < 7; i++) {
                 if (Checked[i]) {
                     selectedColleges.Add(Colleges[i]);
                     someCheck = true;
                 }
             }
+            
+            if (sorted && !someCheck) {
+                await GetAnnouncements();
+                return;
+            }
+            
             if (!someCheck) {
                 return;
             }
@@ -69,6 +81,7 @@ namespace Stable_Frontend.Pages
                 announcement.FromDict(post.ToDictionary());
                 Results.Add(post.Id, announcement);
             }
+            sorted = true;
             StateHasChanged();
         }
     }

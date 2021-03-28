@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Stable_Lib.Handlers;
 
 
 namespace Stable_Frontend.Pages
@@ -17,9 +18,11 @@ namespace Stable_Frontend.Pages
 
         }
 
-        public void SubmitInfo()
+        public async Task SubmitInfo()
         {
-            // Store the Email and the Password string into the database
+            var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.login", new[] {Email, Password});
+            Handler.Uid = uid;
+            NavigationManager.NavigateTo("announcement");
         }
     }
 }

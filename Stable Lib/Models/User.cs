@@ -13,6 +13,13 @@ namespace Stable_Lib.Models
         {
             FromDict(firestoreObject);
         }
+
+        public User(string email, string name, List<string> posts)
+        {
+            Email = email;
+            Name = name;
+            Posts = posts;
+        }
         
         public User(){}
 
@@ -23,6 +30,15 @@ namespace Stable_Lib.Models
                 {"name", Name},
                 {"posts", Posts}
             };
+        }
+
+        public static User DefaultUser()
+        {
+            return new User(new Dictionary<string, object>() {
+                {"email", "user@user.com"},
+                {"name", "Default User"},
+                {"posts", new List<object>()}
+            });
         }
 
         public override void FromDict(Dictionary<string, object> firestoreObject)

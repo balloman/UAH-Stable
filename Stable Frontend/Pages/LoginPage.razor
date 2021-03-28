@@ -1,8 +1,12 @@
 ﻿@page "/login"
+@using Stable_Lib.Handlers
+@inject IJSRuntime JSRuntime
+@inject FirestoreHandler Handler
+@inject NavigationManager NavigationManager
 
 
 
-<div class="navbar navbar-lgiht bg-light justify-content-center">
+<div class="navbar navbar-light bg-light justify-content-center">
     <h2 style="margin:0px; padding:0px">Login</h2>
 </div>
 <div id="login">
@@ -15,7 +19,7 @@
                         <h3 class="text-center text-info">Login</h3>
                         <div class="form-group">
                             <label for="email" class="text-info">Email:</label><br>
-                            <input @bind="Email" type="text" name="email" id="email" class="form-control">
+                            <input autocomplete="false" @bind="Email" type="text" name="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="password" class="text-info">Password:</label><br>

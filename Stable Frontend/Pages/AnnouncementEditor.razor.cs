@@ -81,7 +81,6 @@ namespace Stable_Frontend.Pages
                     retList.Add(colleges[i]);
                 }
             }
-
             return retList;
         }
     }

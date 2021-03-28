@@ -31,16 +31,22 @@ namespace Stable_Lib.Models
             Title = firestoreObject["title"] as string;
             if (!firestoreObject.TryGetValue("college", out var outCollege)) return;
             if (outCollege != null) {
-                College.Add(outCollege as string);
+                foreach (var obj in (List<object>) outCollege) {
+                    College.Add(obj as string);
+                }
             }
         }
 
         public Announcement(Dictionary<string, object> firestoreObject)
         {
+            College = new List<string>();
             FromDict(firestoreObject);
         }
-        
-        public Announcement(){}
+
+        public Announcement()
+        {
+            College = new List<string>();
+        }
         
     }
 }

@@ -8,6 +8,7 @@ namespace Stable_Lib.Models
     {
 
         public string Title { get; set; }
+        public string Category { get; set; }
         public string Body { get; set; }
         public string Author { get; set; }
         public DateTime Created { get; set; }
@@ -18,6 +19,7 @@ namespace Stable_Lib.Models
             return new Dictionary<string, object>() {
                 {"author", Author},
                 {"body", Body},
+                {"category", Category},
                 {"created", Created.ToUniversalTime()},
                 {"title", Title},
                 {"votes", Votes}
@@ -28,6 +30,7 @@ namespace Stable_Lib.Models
         {
             Author = firestoreObject["author"] as string;
             Body = firestoreObject["body"] as string;
+            Category = firestoreObject["category"] as string;
             Created = ((Timestamp) firestoreObject["created"]).ToDateTime();
             Title = firestoreObject["title"] as string;
             Votes = Convert.ToInt32((long) firestoreObject["votes"]);

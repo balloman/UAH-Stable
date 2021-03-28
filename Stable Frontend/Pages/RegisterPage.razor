@@ -1,4 +1,8 @@
 ﻿@page "/register"
+@using Stable_Lib.Handlers
+@inject IJSRuntime JSRuntime
+@inject FirestoreHandler Handler
+@inject NavigationManager NavigationManager
    
 
     
@@ -14,20 +18,21 @@
                     <h3 class="text-center text-info">Registration</h3>
                     <div class="form-group">
                         <label for="name" class="text-info">Full Name:</label><br>
-                        <input @bind="Name" autocomplete="off" type="text" name="name" id="name" class="input form-control">
+                        <input @bind="Name" autocomplete="off" type="text" name="name" id="name" class="input form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="email" class="text-info">Email:</label><br>
-                        <input @bind="Email" autocomplete="off" type="text" name="email" id="email" class="input form-control input">
+                        <input @bind="Email" autocomplete="off" type="text" name="email" id="email" class="input form-control input" required>
                     </div>
                     <div class="form-group">
                         <label for="password" class="text-info">Password:</label><br>
-                        <input @bind="Password" type="text" name="password" id="password" class="input form-control">
+                        <input @bind="Password" type="text" name="password" id="password" class="input form-control" placeholder="Must be at least 8 characters and contain a number!" required>
                     </div>
                     <div class="form-group">
-                        <button @onclick="SubmitInfo" class="btn btn-info btn-md">Submit</button>
+                        
                     </div>
                 </form>
+                <button @onclick="SubmitInfo" class="btn btn-info btn-md">Submit</button>
             </div>
         </div>
     </div>

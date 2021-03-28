@@ -19,9 +19,10 @@ namespace Stable_Frontend.Pages
 
         }
 
-        public void SubmitInfo()
+        public async Task SubmitInfo()
         {
-            // Register the Name Email and Password data into the database
+            var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.signup", new[] {Email, Password});
+            
         }
     }
 }

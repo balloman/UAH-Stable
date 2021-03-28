@@ -18,6 +18,7 @@ namespace Stable_Lib.Handlers
         private static FirestoreHandler Instance;
         private FirestoreDb db;
         private DocumentReference postsRef;
+        public string Uid { get; set; }
         
         public FirestoreHandler()
         {
@@ -77,6 +78,13 @@ namespace Stable_Lib.Handlers
         {
             Console.WriteLine("Adding userinfo to database");
             var docRef = await db.Collection("users").Document(uid).CreateAsync(data);
+            return docRef;
+        }
+
+        public async Task<WriteResult> CreateUser(string uid, User user)
+        {
+            Console.WriteLine("Adding userinfo to database");
+            var docRef = await db.Collection("users").Document(uid).CreateAsync(user.ToFirestoreObject());
             return docRef;
         }
 

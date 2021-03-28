@@ -1,4 +1,6 @@
 ﻿@page "/petitionpost/{Id}"
+@using Stable_Lib.Handlers
+@inject FirestoreHandler Handler
 <!-- This page will be an individual page for announcements-->
 
 <div class="navbar navbar-lgiht bg-light">
@@ -9,24 +11,13 @@
 <div>
     <div style="margin:3%" id="Post Contents">
         <div class="alert alert-light mt-4" role="alert">
-            <h2>@Title</h2>                 <!-- This portion is for the announcement title-->
-            <p style="margin:0px;padding:0px; font-size:9pt">Edited by @Author | @Date</p>
+            <h2>@Petition.Title</h2>                 <!-- This portion is for the announcement title-->
+            <p style="margin:0px;padding:0px; font-size:9pt">Edited by @AuthorName | @Petition.Created.ToLocalTime()</p>
             <hr style="margin:0px 0px 5px 0px ">
 
             <span class="text-nowrap">
-                @((MarkupString)myMarkup)       <!-- This portion is for the announcement contents -->
+                @((MarkupString)Petition.Body)       <!-- This portion is for the announcement contents -->
             </span>
         </div>
     </div>
 </div>
-
-
-
-
-@code
-{
-    string Title = "This is the title";
-    string myMarkup = "<p class='markup'>This is a <em>markup string</em>.</p>";
-    string Author = "Eric Sung";
-    string Date = "01:01:2021";
-}

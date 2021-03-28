@@ -9,7 +9,8 @@ namespace Stable_Frontend.Pages
     public partial class Announcement
     {
         public Dictionary<string, Stable_Lib.Models.Announcement> Results { get; set; }
-        public bool[] Checked = {false, false, false, false, false, false, false};
+        public bool AllChecked = false;
+        public bool[] Checked = {false, false, false, false, false, false, false,false,false,false,false};
         private string[] Colleges = {"AHSS", "Business", "Education", "Engineering", "Nursing", "Science", "Honors"};
 
         protected override async Task OnInitializedAsync()
@@ -35,12 +36,21 @@ namespace Stable_Frontend.Pages
             NavManager.NavigateTo($"post/{id}");
         }
 
+        public void CheckAll()
+        {
+                AllChecked = !AllChecked;
+            for (var i = 0; i < Checked.Length; i++)
+            {
+                Checked[i] = AllChecked;
+            }
+        }
+
         private async Task Sort()
         {
             Console.WriteLine("Sorting");
             var selectedColleges = new List<string>();
             bool someCheck = false;
-            for (var i = 0; i < Checked.Length; i++) {
+            for (var i = 0; i < 7; i++) {   // The number of college categories are only 7
                 if (Checked[i]) {
                     selectedColleges.Add(Colleges[i]);
                     someCheck = true;

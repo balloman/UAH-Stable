@@ -29,24 +29,24 @@ namespace Stable_Lib.Models
             Body = firestoreObject["body"] as string;
             LastModified = ((Timestamp) firestoreObject["lastModified"]).ToDateTime();
             Title = firestoreObject["title"] as string;
-            try {
-                foreach (var college in (List<object>) firestoreObject["college"]) {
-                    College.Add(college as string);
-                }
-            }
-            catch (Exception e) {
-                if (e is KeyNotFoundException || e is NullReferenceException) {
-                    Console.WriteLine("College not found...");
+            if (!firestoreObject.TryGetValue("college", out var outCollege)) return;
+            if (outCollege != null) {
+                foreach (var obj in (List<object>) outCollege) {
+                    College.Add(obj as string);
                 }
             }
         }
 
         public Announcement(Dictionary<string, object> firestoreObject)
         {
+            College = new List<string>();
             FromDict(firestoreObject);
         }
-        
-        public Announcement(){}
+
+        public Announcement()
+        {
+            College = new List<string>();
+        }
         
     }
 }

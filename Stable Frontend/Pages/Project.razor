@@ -1,19 +1,38 @@
 ﻿@page "/project"
 
 
-<div class="navbar navbar-light bg-light">
+@using Stable_Lib.Handlers
+@inject FirestoreHandler Handler
+@inject NavigationManager NavManager
+
+
+<div class="navbar navbar-lgiht bg-light">
     <div class="navbar-brand mb-0">
-        <h2>Projects</h2>
+        <h2>Project</h2>
     </div>
 </div>
-<div>
-    <p>This is a place where students can pitch their interesting and creative ideas to gain support and advice from other students.</p>
+<div style="border:10px" id="list container">
+    <div class="row">
+        <div class="col-8" id="list">
+            <table class="table">
+                <thead class="thead-primary">
+                <tr>
+                    <th style="width:60%">Title</th>
+                    <th style="width:20%">Author</th>
+                    <th style="width:20%">Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var resultsKey in Results.Keys)
+                {
+                    <tr>
+                        <td>@Results[resultsKey].Title</td>
+                        <td>@Authors[resultsKey]</td>
+                        <td><p style="margin:0px; padding:0px">@Results[resultsKey].Created.ToLocalTime().ToString("f")</p></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
-
-@code {
-
-    
-
-
-
-}

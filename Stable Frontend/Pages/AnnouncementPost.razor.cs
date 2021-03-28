@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Stable_Lib.Models;
 
 
 namespace Stable_Frontend.Pages
@@ -17,6 +18,7 @@ namespace Stable_Frontend.Pages
 
         [Parameter]
         public string Id { get; set; }
+        public string AuthorName { get; set; }
 
         public Stable_Lib.Models.Announcement Announcement = new Stable_Lib.Models.Announcement();
 
@@ -24,6 +26,8 @@ namespace Stable_Frontend.Pages
         {
             var task = await Handler.GetPost("announcements", Id);
             Announcement = new Stable_Lib.Models.Announcement(task.ToDictionary());
+            var task2 = await User.FromUid(Announcement.Author);
+            AuthorName = task2.Name;
             Console.WriteLine(Announcement.ToString());
         }
     }

@@ -60,7 +60,7 @@ namespace Stable_Frontend.Pages
         {
             await GetHTML();
             await Handler.UploadNewPost("announcements", new Stable_Lib.Models.Announcement {
-                Author = "Unknown",
+                Author = Handler.user.Uid,
                 Body = EditorContent,
                 LastModified = DateTime.Now,
                 Title = Title

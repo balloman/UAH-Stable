@@ -23,7 +23,9 @@ namespace Stable_Frontend.Pages
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.login", new[] {Email, Password});
             var data = await Handler.GetUser(uid);
-            Handler.Login(new User(data.ToDictionary()));
+            Handler.Login(new User(data.ToDictionary()) {
+                Uid = uid
+            });
             NavigationManager.NavigateTo("announcement");
         }
     }

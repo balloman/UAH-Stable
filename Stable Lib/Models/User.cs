@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Stable_Lib.Handlers;
 
 namespace Stable_Lib.Models
 {
@@ -8,6 +10,7 @@ namespace Stable_Lib.Models
         public string Email { get; set; }
         public string Name { get; set; }
         public List<string> Posts { get; set; }
+        public string Uid { get; set; }
 
         public User(Dictionary<string, object> firestoreObject)
         {
@@ -49,6 +52,12 @@ namespace Stable_Lib.Models
             //Really complicated method to convert an object list to a string list
             l = ((List<object>) firestoreObject["posts"]).Select(o => (string) o).ToList();
             Posts = l;
+        }
+
+        public static async Task<User> FromUid(string uid)
+        {
+            var userRef = await FirestoreHandler.GetInstance().GetUser(uid);
+            return new User(userRef.ToDictionary());
         }
     }
 }

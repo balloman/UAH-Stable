@@ -23,8 +23,8 @@ namespace Stable_Frontend.Pages
         public async Task SubmitInfo()
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.signup", new[] {Email, Password});
-            await Handler.CreateUser(uid, new User(Email, Name, new List<string>()).ToFirestoreObject());
-            NavigationManager.NavigateTo("loginpage");
+            await Handler.CreateUser(uid, new User(Email, Name, new List<string>()));
+            NavigationManager.NavigateTo("login");
         }
     }
 }

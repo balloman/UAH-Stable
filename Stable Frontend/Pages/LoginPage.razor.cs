@@ -21,7 +21,10 @@ namespace Stable_Frontend.Pages
         public async Task SubmitInfo()
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.login", new[] {Email, Password});
-            Handler.Uid = uid;
+            Handler.Login(new FirestoreHandler.UserData() {
+                LoggedIn =  true,
+                Uid = uid
+            });
             NavigationManager.NavigateTo("announcement");
         }
     }

@@ -1,5 +1,7 @@
-﻿@inherits LayoutComponentBase
+﻿@using Stable_Lib.Handlers
+@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject FirestoreHandler Handler
 
 <div class="sidebar">
     <NavMenu/>
@@ -7,8 +9,10 @@
 
 <div class="main">
     <div class="top-row px-4">
-        <button style="margin:0px 10px" class="btn btn-primary" @onclick="Login">Login</button>
-        <button style="margin:0px 10px" class="btn btn-secondary" @onclick="Register">Register</button>
+        
+        <button style="margin:0px 10px" class="btn btn-primary" @onclick="Login" hidden="@Handler.User.LoggedIn">Login</button>
+        <button style="margin:0px 10px" class="btn btn-secondary" @onclick="Register" hidden="@Handler.User.LoggedIn">Register</button>
+        <div>@Handler.</div>
     </div>
     <div class="content px-4">
         @Body

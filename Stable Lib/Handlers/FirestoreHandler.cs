@@ -18,7 +18,7 @@ namespace Stable_Lib.Handlers
         private static FirestoreHandler Instance;
         private FirestoreDb db;
         private DocumentReference postsRef;
-        public string Uid { get; set; }
+        public UserData User { get; set; }
         
         public FirestoreHandler()
         {
@@ -93,6 +93,17 @@ namespace Stable_Lib.Handlers
             Console.WriteLine("Retrieving user");
             var docRef = await db.Collection("users").Document(uid).GetSnapshotAsync();
             return docRef;
+        }
+
+        public void Login(UserData user)
+        {
+            this.User = user;
+        }
+        
+        public class UserData
+        {
+            public string Uid { get; set; }
+            public bool LoggedIn { get; set; }
         }
 
         public static FirestoreHandler GetInstance()

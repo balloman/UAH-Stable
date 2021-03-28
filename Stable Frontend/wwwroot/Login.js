@@ -1,30 +1,34 @@
 ﻿(function () {
     window.FirebaseFunctions = {
-        signup: function (username, pass) {
+        signup: async function (username, pass) {
             // [START auth_signup_password]
-            firebase.auth().createUserWithEmailAndPassword(username, pass)
+            var uid = "";
+            await firebase.auth().createUserWithEmailAndPassword(username, pass)
                 .then((userCredential) => {
                     // Signed in 
-                    console.log(userCredential.user)
-                    return userCredential.user.uid;
+                    console.log(userCredential.user.uid)
+                    uid = userCredential.user.uid;
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage)
                 });
+            return uid;
         },
-        login: function (username, pass){
-            firebase.auth().signInWithEmailAndPassword(email, password)
+        login: async function (username, pass){
+            var uid = "";
+            await firebase.auth().signInWithEmailAndPassword(username, pass)
                 .then((userCredential) => {
                     console.log(userCredential.user.uid)
-                    return userCredential.user.uid
+                    uid = userCredential.user.uid;
                 })
                 .catch((error) => {
                     var errorCode = error.code;
                     var errorMessage = error.message;
                     console.log(errorCode, errorMessage)
                 })
+            return uid;
         }
     }
 })();

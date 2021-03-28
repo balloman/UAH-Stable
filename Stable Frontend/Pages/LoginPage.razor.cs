@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Stable_Lib.Handlers;
+using Stable_Lib.Models;
 
 
 namespace Stable_Frontend.Pages
@@ -21,10 +22,8 @@ namespace Stable_Frontend.Pages
         public async Task SubmitInfo()
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.login", new[] {Email, Password});
-            Handler.Login(new FirestoreHandler.UserData() {
-                LoggedIn =  true,
-                Uid = uid
-            });
+            var data = await Handler.GetUser(uid);
+            Handler.Login(new User(data.ToDictionary()));
             NavigationManager.NavigateTo("announcement");
         }
     }

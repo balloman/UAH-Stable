@@ -10,9 +10,9 @@
 <div class="main">
     <div class="top-row px-4">
         
-        <button style="margin:0px 10px" class="btn btn-primary" @onclick="Login" hidden="@Handler.User.LoggedIn">Login</button>
-        <button style="margin:0px 10px" class="btn btn-secondary" @onclick="Register" hidden="@Handler.User.LoggedIn">Register</button>
-        <div>@Handler.</div>
+        <button style="margin:0px 10px" class="btn btn-primary" @onclick="Login" hidden="@Handler.LoggedIn">Login</button>
+        <button style="margin:0px 10px" class="btn btn-secondary" @onclick="Register" hidden="@Handler.LoggedIn">Register</button>
+        <div hidden="@Handler.LoggedIn.Equals(false)">@Handler.user.Name</div>
     </div>
     <div class="content px-4">
         @Body

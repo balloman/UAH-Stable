@@ -18,11 +18,8 @@ namespace Stable_Lib.Handlers
         private static FirestoreHandler Instance;
         private FirestoreDb db;
         private DocumentReference postsRef;
-
-        public UserData User = new UserData() {
-            LoggedIn = false,
-            Uid = ""
-        };
+        public User user = User.DefaultUser();
+        public bool LoggedIn = false;
         
         public FirestoreHandler()
         {
@@ -99,16 +96,12 @@ namespace Stable_Lib.Handlers
             return docRef;
         }
 
-        public void Login(UserData user)
+        public void Login(User user)
         {
-            this.User = user;
+            this.user = user;
+            LoggedIn = true;
         }
         
-        public class UserData
-        {
-            public string Uid { get; set; }
-            public bool LoggedIn { get; set; }
-        }
 
         public static FirestoreHandler GetInstance()
         {

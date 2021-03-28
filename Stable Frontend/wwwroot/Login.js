@@ -17,7 +17,7 @@
             return uid;
         },
         login: async function (username, pass){
-            var uid = "";
+            let uid = "";
             await firebase.auth().signInWithEmailAndPassword(username, pass)
                 .then((userCredential) => {
                     console.log(userCredential.user.uid)

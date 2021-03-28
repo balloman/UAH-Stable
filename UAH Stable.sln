@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stable Frontend", "Stable Frontend\Stable Frontend.csproj", "{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stable Frontend", "Stable Frontend\Stable Frontend.csproj", "{310F5DD9-1A1C-4C35-96D0-A70DE5EDBC18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stable Lib", "Stable Lib\Stable Lib.csproj", "{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stable Lib", "Stable Lib\Stable Lib.csproj", "{A889E955-FE4C-4E91-A7AF-63F0AF0AC06B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StableLibTests", "StableLibTests\StableLibTests.csproj", "{63A76875-509D-4A0D-923B-9160C1EC2BEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StableLibTests", "StableLibTests\StableLibTests.csproj", "{63A76875-509D-4A0D-923B-9160C1EC2BEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

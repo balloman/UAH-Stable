@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
+using Stable_Lib.Models;
 
 
 namespace Stable_Frontend.Pages
@@ -22,7 +23,8 @@ namespace Stable_Frontend.Pages
         public async Task SubmitInfo()
         {
             var uid = await JSRuntime.InvokeAsync<string>("FirebaseFunctions.signup", new[] {Email, Password});
-            
+            await Handler.CreateUser(uid, new User(Email, Name, new List<string>()).ToFirestoreObject());
+            NavigationManager.NavigateTo("loginpage");
         }
     }
 }

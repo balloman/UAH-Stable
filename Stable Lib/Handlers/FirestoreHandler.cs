@@ -77,14 +77,14 @@ namespace Stable_Lib.Handlers
         public async Task<WriteResult> CreateUser(string uid, Dictionary<string, object> data)
         {
             Console.WriteLine("Adding userinfo to database");
-            var docRef = await db.Collection("users").Document(uid).CreateAsync(data);
+            var docRef = await db.Collection("users").Document(uid).SetAsync(data);
             return docRef;
         }
 
         public async Task<WriteResult> CreateUser(string uid, User user)
         {
             Console.WriteLine("Adding userinfo to database");
-            var docRef = await db.Collection("users").Document(uid).CreateAsync(user.ToFirestoreObject());
+            var docRef = await db.Collection("users").Document(uid).SetAsync(user.ToFirestoreObject());
             return docRef;
         }
 

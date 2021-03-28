@@ -10,5 +10,6 @@ namespace Stable_Frontend.Pages
 {
     public partial class PetitionPost
     {
+
     }
 }

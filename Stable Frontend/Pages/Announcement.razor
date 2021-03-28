@@ -2,7 +2,6 @@
 
 @using Stable_Frontend.Data
 @using Stable_Lib.Handlers
-@inject WeatherForecastService ForecastService
 @inject FirestoreHandler Handler
 @inject NavigationManager NavManager
 
@@ -52,6 +51,7 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>College</th>
                             <th>Title</th>
                             <th>Last Modified</th>
                         </tr>
@@ -60,6 +60,7 @@
                         @foreach (var resultsKey in Results.Keys)
                         {
                             <tr>
+                                <td><!--Add the College Information--></td>
                                 <a href="/post/@resultsKey"><td>@Results[resultsKey].Title</td></a>
                                 <td>@Results[resultsKey].LastModified.ToLocalTime().ToString("f")</td>
                             </tr>

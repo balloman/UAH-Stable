@@ -1,6 +1,9 @@
 ﻿@page "/petition"
 
 @using Stable_Frontend.Data
+@*@inject FirestoreHandler Handler*@
+@inject NavigationManager NavManager
+
 @inject WeatherForecastService ForecastService
 
 <div class="navbar navbar-lgiht bg-light">
@@ -10,7 +13,7 @@
 </div>
 <div style="border:10px" id="list container">
     <div class="row">
-        <div class="col-8"id="list">
+        <div class="col-8" id="list">
             <table class="table">
                 <thead class="thead-primary">
                     <tr>
@@ -24,7 +27,6 @@
                     @foreach (var forecast in forecasts)
                     {
                         <tr>
-
                             <td>@forecast.Date.ToShortDateString()</td>
                             <td>@forecast.TemperatureC</td>
                             <td><p style="margin:0px; padding:0px">@forecast.Summary</p><p style="margin:0px; padding:0px">@Date.</p></td>
@@ -35,12 +37,12 @@
             </table>
         </div>
         <div class="col-2" id="Sidebar">
-            <button id="Add Petition" @onclick="AddPetition">Add Petition</button>
+            <button id="Add Petition" @onclick="AddPetition" class="btn btn-primary">Add Petition</button>
         </div>
     </div>
 </div>
 
- 
+
 @code
 {
     private WeatherForecast[] forecasts;
@@ -54,7 +56,6 @@
 
     private void AddPetition()
     {
-            // Move to the Petition Post Page
+        NavManager.NavigateTo("petitioneditor");
     }
-
 }

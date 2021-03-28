@@ -30,5 +30,11 @@ namespace Stable_Frontend.Pages
             AuthorName = task2.Name;
             Console.WriteLine(Announcement.ToString());
         }
+
+        private void MoveBack()
+        {
+            NavigationManager.NavigateTo("announcement");
+        }
+
     }
 }

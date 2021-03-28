@@ -3,7 +3,7 @@
 @using Stable_Lib.Handlers
 @using Stable_Lib.Models
 @inject FirestoreHandler Handler
-
+@inject NavigationManager NavigationManager
 <!-- This page will be an individual page for announcements-->
 
 <div class="navbar navbar-light bg-light">
@@ -13,7 +13,7 @@
 </div>
 <div>
     <div style="margin:3%" id="Post Contents">
-        <div >
+        <div>
             <h2>@Announcement.Title</h2>                 <!-- This portion is for the announcement title-->
             <p style="margin:0px;padding:0px; font-size:9pt">Edited by @AuthorName| @Announcement.LastModified.ToLocalTime()</p>
             <hr style="margin:0px 0px 5px 0px ">
@@ -23,4 +23,5 @@
             </span>
         </div>
     </div>
+    <button class="btn btn-block">Back</button>
 </div>

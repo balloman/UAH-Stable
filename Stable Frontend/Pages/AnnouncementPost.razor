@@ -12,12 +12,12 @@
 </div>
 <div>
     <div style="margin:3%" id="Post Contents">
-        <div class="alert alert-light mt-4" role="alert">
+        <div >
             <h2>@Announcement.Title</h2>                 <!-- This portion is for the announcement title-->
             <p style="margin:0px;padding:0px; font-size:9pt">Edited by @Announcement.Author | @Announcement.LastModified.ToLocalTime()</p>
             <hr style="margin:0px 0px 5px 0px ">
 
-            <span class="text-nowrap">
+            <span class="text-nowrap" style="border:10px 0 0 0">
                 @((MarkupString)Announcement.Body)       <!-- This portion is for the announcement contents -->
             </span>
         </div>

@@ -18,7 +18,11 @@ namespace Stable_Lib.Handlers
         private static FirestoreHandler Instance;
         private FirestoreDb db;
         private DocumentReference postsRef;
-        public UserData User { get; set; }
+
+        public UserData User = new UserData() {
+            LoggedIn = false,
+            Uid = ""
+        };
         
         public FirestoreHandler()
         {

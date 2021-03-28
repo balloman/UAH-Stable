@@ -1,0 +1,39 @@
+﻿@page "/register"
+   
+
+    
+<div class="navbar navbar-lgiht bg-light justify-content-center">
+    <h2 style="margin:0px; padding:0px">Login</h2>
+</div>
+<h3 class="text-center text-white pt-5">Registration form</h3>
+<div class="container">
+    <div id="login-row" class="row justify-content-center align-items-center">
+        <div id="login-column" class="col-md-6">
+            <div id="login-box" class="col-md-12">
+                <form  id="login-form" class="form" action="" method="post">
+                    <h3 class="text-center text-info">Registration</h3>
+                    <div class="form-group">
+                        <label for="name" class="text-info">Full Name:</label><br>
+                        <input @bind="Name" autocomplete="off" type="text" name="name" id="name" class="input form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="text-info">Email:</label><br>
+                        <input @bind="Email" autocomplete="off" type="text" name="email" id="email" class="input form-control input">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="text-info">Password:</label><br>
+                        <input @bind="Password" type="text" name="password" id="password" class="input form-control">
+                    </div>
+                    <div class="form-group">
+                        <button @onclick="SubmitInfo" class="btn btn-info btn-md">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    @code
+{
+
+    }

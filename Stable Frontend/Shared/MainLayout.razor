@@ -2,15 +2,14 @@
 @inject NavigationManager NavigationManager
 
 <div class="sidebar">
-    <NavMenu />
+    <NavMenu/>
 </div>
 
 <div class="main">
     <div class="top-row px-4">
-        <button class="btn btn-primary" @onclick="Login">Login</button>
-        <button class="btn btn-secondary" @onclick="Register">Register</button>
+        <button style="margin:0px 10px" class="btn btn-primary" @onclick="Login">Login</button>
+        <button style="margin:0px 10px" class="btn btn-secondary" @onclick="Register">Register</button>
     </div>
-
     <div class="content px-4">
         @Body
     </div>
@@ -21,11 +20,11 @@
 
     private void Login()
     {
-        NavigationManager.NavigateTo("announcement");
+        NavigationManager.NavigateTo("login");
     }
 
     private void Register()
     {
-        NavigationManager.NavigateTo("announcement");
+        NavigationManager.NavigateTo("register");
     }
 }

@@ -91,5 +91,14 @@ namespace StableLibTests
                 Console.WriteLine(announcement.ToString());
             }
         }
+
+        [TestMethod]
+        public void GetUsersTest()
+        {
+            var handler = FirestoreHandler.GetInstance();
+            var task = handler.GetUser("example");
+            var u = new User(task.Result.ToDictionary());
+            u.ToString();
+        }
     }
 }

@@ -8,6 +8,7 @@ using FirebaseAdmin;
 using Google.Cloud.Firestore;
 using Google.Cloud.Firestore.V1;
 using Stable_Lib.Models;
+using WriteResult = Google.Cloud.Firestore.WriteResult;
 
 namespace Stable_Lib.Handlers
 {
@@ -72,9 +73,18 @@ namespace Stable_Lib.Handlers
             return docRef;
         }
 
-        public async Task<DocumentReference> CreateUser(string uid)
+        public async Task<WriteResult> CreateUser(string uid, Dictionary<string, object> data)
         {
             Console.WriteLine("Adding userinfo to database");
+            var docRef = await db.Collection("users").Document(uid).CreateAsync(data);
+            return docRef;
+        }
+
+        public async Task<DocumentSnapshot> GetUser(string uid)
+        {
+            Console.WriteLine("Retrieving user");
+            var docRef = await db.Collection("users").Document(uid).GetSnapshotAsync();
+            return docRef;
         }
 
         public static FirestoreHandler GetInstance()

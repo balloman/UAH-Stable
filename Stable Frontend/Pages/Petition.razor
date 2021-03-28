@@ -18,19 +18,19 @@
                 <thead class="thead-primary">
                     <tr>
                         <th style="width:10%">Category</th>
-                        <th style="width:70%">Title</th>
+                        <th style="width:65%">Title</th>
                         <th style="width:10%">Edited</th>
-                        <th style="width:10%">Votes</th>
+                        <th style="width:15%">Votes</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var forecast in forecasts)
                     {
                         <tr>
-                            <td>@forecast.Date.ToShortDateString()</td>
-                            <td>@forecast.TemperatureC</td>
-                            <td><p style="margin:0px; padding:0px">@forecast.Summary</p><p style="margin:0px; padding:0px">@Date.</p></td>
-                            <td><span class="oi oi-thumb-up">@forecast.TemperatureC</span>  <span class="oi oi-thumb-down">@forecast.TemperatureF</span> </td>
+                            <td>@forecast.Category</td>
+                            <td>@forecast.Title</td>
+                            <td><p style="margin:0px; padding:0px">@forecast.Name</p><p style="margin:0px; padding:0px">@Date.ToShortDateString()</p></td>
+                            <td><span class="oi oi-thumb-up">@forecast.Upvote</span>  <span class="oi oi-thumb-down">@forecast.Downvote</span> </td>
                         </tr>
                     }
                 </tbody>

@@ -17,11 +17,11 @@
             <h5 class="font-weight-bold" style="margin:10px 0px; color:blue;">Categories</h5>
             <table>
                 <tr>
-                    <th><input type="checkbox" id="all" value="all_val" @onchange="CheckAll"  /></th>
+                    <th><input type="checkbox" id="all" value="all_val" @onchange="CheckAll" /></th>
                     <th>Select All</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="general" value="general_val" @bind="Checked[10]"/></th>
+                    <th><input type="checkbox" id="general" value="general_val" @bind="Checked[10]" /></th>
                     <th>General</th>
                 </tr>
                 <tr><!-- Add a Space --></tr>
@@ -98,9 +98,8 @@
                         @foreach (var resultsKey in Results.Keys)
                         {
                             <tr>
-                                <td>@foreach (var c in Results[resultsKey].College) {
-                                        @(c.Substring(0, 2) + ' ')
-                                    }</td>
+                                @* <td><b hidden="@Results[resultsKey].College[0]== ">A</b><b>B</b><b>Ed</b><b>En</b><b>N</b><b>S</b><b>H</b></td> *@
+                                <td>@foreach(var c in Results[resultsKey].College){@(c.Substring(0, 2) + ' ')}</td>
                                 <a href="/post/@resultsKey"><td>@Results[resultsKey].Title</td></a>
                                 <td>@Results[resultsKey].LastModified.ToLocalTime().ToString("f")</td>
                             </tr>

@@ -9,7 +9,8 @@ namespace Stable_Frontend.Pages
     public partial class Announcement
     {
         public Dictionary<string, Stable_Lib.Models.Announcement> Results { get; set; }
-        public bool[] Checked = {false, false, false, false, false, false, false};
+        public bool AllChecked = false;
+        public bool[] Checked = {false, false, false, false, false, false, false,false,false,false,false};
         private string[] Colleges = {"AHSS", "Business", "Education", "Engineering", "Nursing", "Science", "Honors"};
         private bool sorted = false;
 
@@ -39,6 +40,15 @@ namespace Stable_Frontend.Pages
         private void GoToPost(string id)
         {
             NavManager.NavigateTo($"post/{id}");
+        }
+
+        public void CheckAll()
+        {
+                AllChecked = !AllChecked;
+            for (var i = 0; i < Checked.Length; i++)
+            {
+                Checked[i] = AllChecked;
+            }
         }
 
         private async Task Sort()

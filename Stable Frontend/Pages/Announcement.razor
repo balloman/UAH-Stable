@@ -14,16 +14,20 @@
     </div>
     <div class="row" id="column-container">
         <div class="col-3" id="category-column">
-            <h5 class="font-weight-bold" style="margin:10px 0">Categories</h5>
+            <h5 class="font-weight-bold" style="margin:10px 0px; color:blue;">Categories</h5>
             <table>
                 <tr>
-                    <th><input type="checkbox" id="general" value="arts_val" /></th>
+                    <th><input type="checkbox" id="all" value="all_val" @onchange="CheckAll"  /></th>
+                    <th>Select All</th>
+                </tr>
+                <tr>
+                    <th><input type="checkbox" id="general" value="general_val" @bind="Checked[10]"/></th>
                     <th>General</th>
                 </tr>
                 <tr><!-- Add a Space --></tr>
                 <tr>
                     <th></th>
-                    <th style="font-size:18px; color:blue;">Colleges </th>
+                    <th style="font-size:18px; color:deepskyblue;">Colleges </th>
                 </tr>
                 <tr>
                     <th><input type="checkbox" id="arts" value="arts_val" @bind="Checked[0]" /></th>
@@ -56,24 +60,24 @@
                 <tr><!-- Add a Space --></tr>
                 <tr>
                     <th></th>
-                    <th style="font-size:18px; color:blue;">Clubs</th>
+                    <th style="font-size:18px; color:deepskyblue;">Clubs</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="ACM" value="acm_val" /></th>
+                    <th><input type="checkbox" id="ACM" value="acm_val" @bind="Checked[7]" /></th>
                     <th>ACM</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="Space Hardware" value="spacehardware_val" /></th>
+                    <th><input type="checkbox" id="Space Hardware" value="spacehardware_val" @bind="Checked[8]" /></th>
                     <th>Space Hardware</th>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="Esports" value="esports_val" /></th>
+                    <th><input type="checkbox" id="Esports" value="esports_val" @bind="Checked[9]" /></th>
                     <th>Esports</th>
                 </tr>
                 <tr><th></th><!-- Add a Space --><th></th></tr>
                 <tr>
                     <th></th>
-                    <th style="font-size:18px; color:blue;">Communities</th>
+                    <th style="font-size:18px; color:deepskyblue;">Communities</th>
                 </tr>
 
             </table>
